@@ -84,17 +84,18 @@ class TweetCell: UITableViewCell {
             switch detection.type {
             case .hashtag(let tag):
                 if let url = URL(string: "https://twitter.com/hashtag/\(tag)") {
-                    UIApplication.shared.openURL(url)
+					UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             case .mention(let name):
                 if let url = URL(string: "https://twitter.com/\(name)") {
-                    UIApplication.shared.openURL(url)
+					UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             case .link(let url):
-                UIApplication.shared.openURL(url)
+				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
             case .tag(let tag):
                 if tag.name == "a", let href = tag.attributes["href"], let url = URL(string: href) {
-                    UIApplication.shared.openURL(url)
+					UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             default:
                 break
